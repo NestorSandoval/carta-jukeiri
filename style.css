@@ -276,7 +276,7 @@ body {
 .year-carousel {
   position: fixed;
   inset: 0;
-  background-image: url("images/portada-año-jukeiri.jpg");
+  background-image: url("images/portada-ano-jukeiri.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover; /* clave */
