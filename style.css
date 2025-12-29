@@ -229,7 +229,7 @@ body {
 
 /*Vista celular*/
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 460px) {
   .contenedor {
     width: 300px;
   }
@@ -243,6 +243,19 @@ body {
     border-top: 150px solid var(--solapa-sobre);
     border-right: 150px solid transparent;
     border-left: 150px solid transparent;
+  }
+
+  .year-carousel {
+    position: fixed;
+    inset: 0;
+    background-image: url("images/portada-año-jukeiri.jpg");
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: opacity 0.8s;
   }
 }
 
@@ -263,7 +276,10 @@ body {
 .year-carousel {
   position: fixed;
   inset: 0;
-  background: #000;
+  background-image: url("images/portada-año-jukeiri.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; /* clave */
   color: white;
   display: flex;
   flex-direction: column;
@@ -271,6 +287,18 @@ body {
   justify-content: center;
   z-index: 10;
   transition: opacity 0.8s;
+}
+
+.year-carousel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: inherit;
+  background-size: inherit;
+  background-position: inherit;
+  filter: blur(10px) brightness(0.75);
+  transform: scale(1.1); /* evita bordes blancos */
+  z-index: -1;
 }
 
 .slide {

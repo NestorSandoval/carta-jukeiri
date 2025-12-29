@@ -13,7 +13,10 @@
 
   <body>
     <div class="year-carousel" id="carousel">
-      <div class="slide active">
+         <div class="slide active">
+        <p>Unos pequeños recuerdos, pero cada uno de ellos tiene un significado especial para mí. Espero y te guste amor ❤️</p>
+      </div>
+      <div class="slide">
         <img src="images/image30.jpeg" />
         <p>Aqui me traias cargando en un juego como toda una cabellorosa</p>
       </div>
@@ -96,14 +99,22 @@
   ></video>
   <p>Y un video que me gusta mucho ver, que estas flores te las di con todo mi amor</p>
 </div>
-      <button class="next-btn" id="next">Siguiente</button>
+
+<div>
+     <button class="next-btn" id="prev" style="display: none;">Anterior</button>
+<button class="next-btn" id="next">Siguiente</button>
+</div>
+
+
     </div>
+
+   
 
     <div class="final-step" id="finalStep">
       <button class="open-letter-btn" id="openLetter">💌 Ábrelo</button>
     </div>
 
-  <h1>¡Feliz Año Nuevo y Por Mas Momentos Juntos Amor! ❤️</h1>
+  <h1>¡Feliz Año Nuevo y Por Mas Momentos Juntos Amor!</h1>
     <div class="contenedor">
         <div class="envoltura-sobre">
             <div class="sobre">
@@ -146,39 +157,56 @@
             <div class="solapa-izquierda"></div>
         </div>
 
-    <script>
-      /* Carrusel */
-      const slides = document.querySelectorAll(".slide");
-      const nextBtn = document.getElementById("next");
-      const carousel = document.getElementById("carousel");
-      const finalStep = document.getElementById("finalStep");
-      const openLetter = document.getElementById("openLetter");
-      const main = document.getElementById("main");
+   <script>
+  const slides = document.querySelectorAll(".slide");
+  const nextBtn = document.getElementById("next");
+  const prevBtn = document.getElementById("prev");
+  const carousel = document.getElementById("carousel");
+  const finalStep = document.getElementById("finalStep");
+  const openLetter = document.getElementById("openLetter");
+  const main = document.getElementById("main");
 
-      let index = 0;
+  let index = 0;
 
-      nextBtn.onclick = () => {
-        slides[index].classList.remove("active");
-        index++;
-        if (index < slides.length) {
-          slides[index].classList.add("active");
-        } else {
-          carousel.style.opacity = "0";
-          setTimeout(() => {
-            carousel.style.display = "none";
-            finalStep.classList.add("show");
-          }, 800);
-        }
-      };
+  function updateButtons() {
+    // Botón Anterior solo desde la segunda slide
+    prevBtn.style.display = index === 0 ? "none" : "inline-block";
+  }
 
-      openLetter.onclick = () => {
-        finalStep.style.opacity = "0";
-        setTimeout(() => {
-          finalStep.style.display = "none";
-          main.classList.add("show");
-        }, 600);
-      };
-    </script>
+  nextBtn.onclick = () => {
+    slides[index].classList.remove("active");
+    index++;
+
+    if (index < slides.length) {
+      slides[index].classList.add("active");
+      updateButtons();
+    } else {
+      carousel.style.opacity = "0";
+      setTimeout(() => {
+        carousel.style.display = "none";
+        finalStep.classList.add("show");
+      }, 800);
+    }
+  };
+
+  prevBtn.onclick = () => {
+    slides[index].classList.remove("active");
+    index--;
+    slides[index].classList.add("active");
+    updateButtons();
+  };
+
+  openLetter.onclick = () => {
+    finalStep.style.opacity = "0";
+    setTimeout(() => {
+      finalStep.style.display = "none";
+      main.classList.add("show");
+    }, 600);
+  };
+
+  updateButtons();
+</script>
+
 
     <script src="script_v2.js"></script>
   </body>
